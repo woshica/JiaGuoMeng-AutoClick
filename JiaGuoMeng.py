@@ -17,7 +17,7 @@ moveInterval = 150                                  #定义了鼠标移动时各
 clickInterval = 20                                  #定义了两次鼠标点击事件间需要等待的时间
 upgradeInterval = 300                               #定义了升级建筑时点击事件间需要等待的时间
 initialTime = 500                                   #定义了脚本在初始时需要等待的时间
-reloadCycle = 5                                     #定义了重载游戏前重复收取货物的次数
+reloadCycle = 1                                     #定义了重载游戏前重复收取货物的次数
 policyCycle = 10                                    #定义了升级政策前重复收取货物次数
 resetCycle = 2                                      #定义了重置界面前的重复收货物次数
 collectRateWhileTrain = 2                           #定义了火车来的时候，每进行几次拖拽收集一次金币（单位是次数）
@@ -47,7 +47,7 @@ pos = {
             "account": (6.16, 3.91),
             "logout": (28.33, 74.38),
             "qqLogin": (71.57, 82.77),
-            "qqLogin2": (50.0, 48.77),
+            "qqLogin2": (51.4, 92.16),
             "policyCenter": (22.00, 11.40),
             "policyUpgrade": (49.13, 61.67)
         },
@@ -306,9 +306,9 @@ class Mission():
         self.click(pos["otherPos"]["logout"])
         self.wait(3000)
         self.click(pos["otherPos"]["qqLogin"])
-        self.wait(1500)
+        self.wait(3000)
         self.click(pos["otherPos"]["qqLogin2"])
-        self.wait(6000)
+        self.wait(32000)
 
     def collectTrain(self):
         """

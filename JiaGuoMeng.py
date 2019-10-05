@@ -214,7 +214,7 @@ class Mission():
 
     def collectCoins(self):
         """
-        关闭家国之光弹窗并收集所有建筑的金币
+        收集所有建筑的金币
         """
         self.wait(clickInterval)
         for i in pos["buildingPos"]:
@@ -224,13 +224,16 @@ class Mission():
     def reset(self):
         """
         避免卡在某些界面(如建筑升级界面，家国之光弹窗)，关闭所有弹窗
+        如果没有打开升级建筑、政策等页面，则不需要进行reset操作
         """
-        self.click(pos["otherPos"]["openUpgrade"])
-        self.click(pos["otherPos"]["policyCenter"])
-        self.wait(upgradeInterval)
-        self.click(pos["otherPos"]["openUpgrade"])
-        self.click(pos["otherPos"]["policyCenter"])
-        self.wait(upgradeInterval)
+        if(self.buildingsNeedUpgrade or self.policys or self.exchangeBuildings):
+            self.click(pos["otherPos"]["openUpgrade"])
+            self.wait(upgradeInterval)
+            self.click(pos["otherPos"]["policyCenter"])
+            self.click(pos["otherPos"]["openUpgrade"])
+            self.wait(upgradeInterval)
+            self.click(pos["otherPos"]["policyCenter"])
+            self.wait(upgradeInterval)
         self.click(pos["otherPos"]["lightPos"])
         self.click(pos["otherPos"]["lightPos"])
         self.wait(upgradeInterval)

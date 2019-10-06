@@ -115,6 +115,17 @@ class Mission():
                 "EventType": allEvents[eventType]
             }
         )
+    def addBackEvent(self):
+        """
+        返回的事件
+        """
+        self.events.append(
+            {
+                "Timestamp": self.currentTime,
+                "Msg": "{\"EventAction\":\"BackButton\"}",
+                "EventType": "Client"
+            }
+        )
     def initialize(self):
         """
         初始化Mission
@@ -304,6 +315,8 @@ class Mission():
         self.click(pos["otherPos"]["account"])
         self.wait(upgradeInterval)
         self.click(pos["otherPos"]["logout"])
+        self.addBackEvent()#避免卡死在登陆的某个界面，先按2次回退
+        self.addBackEvent()
         self.wait(3000)
         self.click(pos["otherPos"]["qqLogin"])
         self.wait(3000)
